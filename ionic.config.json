@@ -1,0 +1,7 @@
+{
+  "name": "dining-flow-front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
