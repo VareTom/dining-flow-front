@@ -1,4 +1,8 @@
-<div class="input">
+<div class="input" (click)="onFocus()">
   <span class="label">{{label}}</span>
-  <input [type]="type" [formControl]="formControl">
+  <input #input [type]="type" [formControl]="formControl">
+</div>
+<div class="error-message" *ngIf="isFieldRequired">
+  <img src="assets/icons/info.svg" alt="info illustration">
+  Mandatory field
 </div>
