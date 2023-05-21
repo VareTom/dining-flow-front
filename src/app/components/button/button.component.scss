@@ -1,0 +1,22 @@
+@import "src/global";
+
+.btn {
+  padding: 1rem 2rem;
+  border-radius: .5rem;
+  color: $white;
+  font-size: 1.2rem;
+  width: 100%;
+  transition: $transition;
+
+  &:not(.btn__disabled) {
+    background: $blue;
+  }
+
+  &.__small {
+    width: fit-content;
+  }
+
+  &.__disabled {
+    background: $lighter-blue;
+  }
+}
