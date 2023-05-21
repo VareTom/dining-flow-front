@@ -1,0 +1,25 @@
+<ion-content>
+  <app-back-button (click)="onBack()"></app-back-button>
+
+  <div class="container">
+    <div class="illustration">
+      <img src="assets/icons/undraw_details_register.svg" alt="register illustration">
+    </div>
+
+    <div class="titles">
+      <h2>Sign Up</h2>
+      <span class="sub-title">
+        Create an account to share your best stop to your friends or family
+      </span>
+    </div>
+
+    <div class="form">
+      <app-input label="Email" type="email" [formControl]="emailFormControl"></app-input>
+      <app-input label="Password" type="password" [formControl]="passwordFormControl"></app-input>
+    </div>
+
+    <div class="actions">
+      <app-button buttonText="Create an account" [disabled]="!isFormValid" (click)="onRegister()"></app-button>
+    </div>
+  </div>
+</ion-content>
