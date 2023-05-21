@@ -1,0 +1,15 @@
+@import "variables";
+
+:root {
+  --ion-safe-area-right: 0px !important;
+  --ion-font-family: 'Roboto', sans-serif;
+}
+
+ion-content {
+  overflow-y: hidden;
+}
+
+ion-button {
+  --border-radius: .5rem;
+  --background: $blue;
+}
