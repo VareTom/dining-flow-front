@@ -7,16 +7,13 @@
   font-size: 1.2rem;
   width: 100%;
   transition: $transition;
-
-  &:not(.btn__disabled) {
-    background: $blue;
-  }
+  background: $blue;
 
   &.__small {
     width: fit-content;
   }
 
-  &.__disabled {
-    background: $lighter-blue;
+  &:disabled {
+    background: $black;
   }
 }

@@ -20,8 +20,7 @@ export class ButtonComponent  implements OnInit {
 
   get classes() {
     return {
-      'btn__small': this.small,
-      'btn__disabled': this.disabled
+      'btn__small': this.small
     }
   }
 
