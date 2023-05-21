@@ -1,0 +1,21 @@
+@import "src/global";
+
+.input {
+  padding: 1rem;
+  background: rgba($black, .15);
+  border-radius: .5rem;
+  color: $sub-title;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .label {
+    width: 6.5rem;
+  }
+
+  input {
+    width: calc(100% - 6.5rem);
+    background: none;
+    border: none;
+  }
+}
