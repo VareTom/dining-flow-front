@@ -5,6 +5,8 @@ import { FormControl, Validators } from '@angular/forms';
 import { ButtonComponent } from '../../../components/button/button.component';
 import { InputComponent } from '../../../components/input/input.component';
 import { BackButtonComponent } from '../../../components/back-button/back-button.component';
+import { AuthService } from '../../../../shared/services/auth.service';
+import { Store } from '../../../../store';
 
 @Component({
   selector: 'app-login',
@@ -17,19 +19,24 @@ import { BackButtonComponent } from '../../../components/back-button/back-button
     InputComponent,
     IonicModule,
     BackButtonComponent,
+  ],
+  providers: [
+    Store
   ]
 })
 export class LoginPage implements OnInit {
 
-  emailFormControl = new FormControl(null, [Validators.required]);
-  passwordFormControl = new FormControl(null, [Validators.required]);
+  emailFormControl = new FormControl('', [Validators.required]);
+  passwordFormControl = new FormControl('', [Validators.required]);
 
   get isFormValid(): boolean {
     return this.emailFormControl.valid && this.passwordFormControl.valid;
   }
 
   constructor(
-    private navController: NavController
+    private navController: NavController,
+    private readonly authService: AuthService,
+    private store: Store
   ) { }
 
   ngOnInit() {
@@ -40,7 +47,14 @@ export class LoginPage implements OnInit {
   }
 
   onLogin() {
-    if (this.isFormValid) this.navController.navigateForward('home', {animationDirection: 'forward'});
+    if (this.isFormValid && this.emailFormControl.value && this.passwordFormControl.value) {
+      this.authService.login(this.emailFormControl.value, this.passwordFormControl.value).subscribe({
+        next: () => {
+          this.navController.navigateForward('home', {animationDirection: 'forward'});
+          console.log(this.store.value.connectedUser)
+        }
+      })
+    }
   }
 
   onRegister() {

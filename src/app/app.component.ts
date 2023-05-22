@@ -1,6 +1,9 @@
 import { Component, Renderer2 } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
+import { Observable } from 'rxjs';
+import { Store } from '../store';
 
 @Component({
   selector: 'app-root',
@@ -9,16 +12,26 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [
     IonicModule,
-    CommonModule
+    CommonModule,
+    NavigationBarComponent
   ],
+  providers: [
+    Store
+  ]
 })
 export class AppComponent {
 
+  isNavigationBarDisplayed$!: Observable<boolean>;
+
   isDarkTheme = false;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(
+    private renderer: Renderer2,
+    private store: Store
+  ) {}
 
   ngOnInit() {
+    this.isNavigationBarDisplayed$ = this.store.select<boolean>('isNavigationBarDisplayed');
     // const isDarkTheme = JSON.parse(localStorage.getItem('color-theme')?? '');
     // this.isDarkTheme = !!isDarkTheme;
     this.onSetColorTheme(false);

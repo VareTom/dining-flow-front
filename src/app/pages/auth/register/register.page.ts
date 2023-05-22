@@ -23,6 +23,7 @@ export class RegisterPage implements OnInit {
 
   emailFormControl = new FormControl(null, [Validators.required]);
   passwordFormControl = new FormControl(null, [Validators.required]);
+  unsernameFormControl = new FormControl(null, [Validators.required]);
 
   get isFormValid(): boolean {
     return this.emailFormControl.valid && this.passwordFormControl.valid;

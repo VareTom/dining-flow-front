@@ -1,4 +1,6 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
 <!--  <ion-toggle [checked]="isDarkTheme" (ionChange)="onToggleColorTheme($event)">Default Toggle</ion-toggle>-->
+  <app-navigation-bar *ngIf="(isNavigationBarDisplayed$|async)"></app-navigation-bar>
+
 </ion-app>

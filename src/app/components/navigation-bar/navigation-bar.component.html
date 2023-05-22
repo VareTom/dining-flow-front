@@ -1,6 +1,6 @@
 <div class="navigation-bar">
-  <div class="link" (click)="onClickNavItem(item)" *ngFor="let item of navItems" [class.active]="item.isActive" [class.add-icon]="item.link === 'create'">
+  <div class="link" (click)="onClickNavItem(item)" *ngFor="let item of navItems" [class.active]="item.isActive" [class.add-icon]="item.link === 'restaurant-form'">
     <img [src]="'assets/icons/' + item.iconName + '.svg'" alt="home illustration">
-    <div class="indicator" [class.active]="item.isActive"></div>
+    <div class="indicator" *ngIf="item.link !== 'restaurant-form'" [class.active]="item.isActive"></div>
   </div>
 </div>

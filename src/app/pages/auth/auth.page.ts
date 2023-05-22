@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule, NavController } from '@ionic/angular';
 import { ButtonComponent } from '../../components/button/button.component';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -13,16 +14,25 @@ import { Router } from '@angular/router';
     IonicModule,
     CommonModule,
     ButtonComponent
+  ],
+  providers: [
+    AuthService
   ]
 })
 export class AuthPage implements OnInit {
 
   constructor(
     private router: Router,
-    private navController: NavController
+    private navController: NavController,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
+    if (localStorage.getItem('token')) {
+      this.authService.autoLogin().subscribe({
+        next: () => this.navController.navigateForward('home', {animationDirection: 'forward'})
+      });
+    }
   }
 
   onRegister() {

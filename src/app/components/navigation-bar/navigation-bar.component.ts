@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavController } from '@ionic/angular';
+import { IonicModule, NavController } from '@ionic/angular';
 
 interface NavItem {
   link: string;
@@ -13,7 +13,7 @@ interface NavItem {
   standalone: true,
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.scss'],
-  imports: [CommonModule]
+  imports: [CommonModule, IonicModule]
 })
 export class NavigationBarComponent  implements OnInit {
 
@@ -24,12 +24,12 @@ export class NavigationBarComponent  implements OnInit {
       iconName: 'home'
     },
     {
-      link: 'favs',
+      link: 'favorites',
       isActive: false,
       iconName: 'heart'
     },
     {
-      link: 'create',
+      link: 'restaurant-form',
       isActive: false,
       iconName: 'plus',
     },
@@ -51,7 +51,7 @@ export class NavigationBarComponent  implements OnInit {
 
   onClickNavItem(item: NavItem) {
     this.navItems.forEach(n => n.isActive = n.link === item.link);
-    this.navController.navigateForward(item.link);
+    this.navController.navigateForward(item.link === 'home' ? 'home': 'home/'+item.link, {animationDirection: 'forward'});
   }
 
 }
